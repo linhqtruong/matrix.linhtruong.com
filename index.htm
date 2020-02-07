@@ -1,0 +1,459 @@
+
+<html>
+<head>
+<meta http-equiv="Author" Content="Linh Truong 2012"/>
+<style>                         
+  .fixed {font-family: "Lucida Console"; font-size=30pt; 
+    font-weight:bold; color:#10FF33;}
+  .matrix {font-family: "Terminal"; font-size=30pt; 
+    font-weight:bold; color:#10FF33;}
+  .OCR {font-family: "OCR A Extended"; font-size=30pt; 
+    font-weight:bold; color:#10FF33;}
+  a {text-decoration: none; color:black;} 
+  a.ltLink {text-decoration: none; color:#00CC00;} 
+  a:hover {text-decoration: underline overline; color: white;}
+</style></head>
+<body style="background:#000000; background-image: url(matrix.jpg); color:white; font-family: Arial">  
+
+<script> 
+<!--
+var nDelay = 50;
+
+function cDecoder(sMe, sPre, sMsg) { 
+  this.self = sMe;
+  this.msg = sMsg;
+  this.arr = new Array();   
+  this.current = "";   
+  this.prefix = sPre;
+  this.space = 15; 
+  this.speed = nDelay;
+}
+
+function Main() { 
+  
+  eval(this.prefix+"Zero.innerText="+this.prefix+"One.innerText");
+  eval(this.prefix+"One.innerText="+this.prefix+"Two.innerText");
+  eval(this.prefix+"Two.innerText="+this.prefix+"Three.innerText");
+  eval(this.prefix+"Three.innerText="+this.prefix+"Four.innerText");
+  eval(this.prefix+"Four.innerText="+this.prefix+"Top.innerText");
+  this.current = ""; 
+  this.current = ""; 
+  var nMatch = 0;
+	for (i=0; i<this.msg.length; i++) {
+	  if (this.arr[i] != this.msg.charAt(i)) {
+	  	this.arr[i] = GetChar();  
+	  	nMatch++;      
+	  }
+	  this.current+= this.arr[i];
+	}
+  eval(this.prefix+"Top.innerText=this.current");
+  if (this.current!=this.msg)
+  	window.setTimeout(this.self+".decode();",nDelay);    
+  else {
+  
+    eval(this.prefix+"Zero.innerText=this.msg");
+    eval(this.prefix+"One.innerText=this.msg");
+    eval(this.prefix+"Two.innerText=this.msg");
+    eval(this.prefix+"Three.innerText=this.msg");
+    eval(this.prefix+"Four.innerText=this.msg");
+  }
+}  
+
+function Move() {
+  var nTop=0;
+  eval("nTop=parseInt("+this.prefix+"Main.style.top)"); 
+  if (nTop>500) {
+    nTop=-100;
+    eval(this.prefix+"Main.style.left='"+(parseInt((Math.random()*70))*10)+"px'");
+  }
+  eval(this.prefix+"Main.style.top='"+(nTop+20)+"px'");
+  
+  eval(this.prefix+"Zero.innerText="+this.prefix+"One.innerText");
+  eval(this.prefix+"One.innerText="+this.prefix+"Two.innerText");
+  eval(this.prefix+"Two.innerText="+this.prefix+"Three.innerText");
+  eval(this.prefix+"Three.innerText="+this.prefix+"Four.innerText");
+  eval(this.prefix+"Four.innerText="+this.prefix+"Five.innerText");
+  eval(this.prefix+"Five.innerText="+this.prefix+"Six.innerText");
+  eval(this.prefix+"Six.innerText="+this.prefix+"Seven.innerText");
+  eval(this.prefix+"Seven.innerText="+this.prefix+"Eight.innerText");
+  eval(this.prefix+"Eight.innerText="+this.prefix+"Nine.innerText");
+  eval(this.prefix+"Nine.innerText="+this.prefix+"Ten.innerText");
+  eval(this.prefix+"Ten.innerText="+this.prefix+"Top.innerText");
+  eval(this.prefix+"Top.innerText=this.current");
+  this.current = ""; 
+  var sSpc = "                                                        "; 
+  this.current = GetChar() + sSpc.substring(0,this.space) + GetChar();
+  //this.current = GetChar() + GetChar();
+
+  eval(this.prefix+"Top.innerText=this.current");
+  window.setTimeout(this.self+".down();",this.speed);    
+}  
+
+function GetChar() {
+  switch (parseInt(Math.random()*10)) {
+    case 0: 
+      var vArr = new Array("A", "E", "I", "O", "U", "a", "e", "i", "o", "u", " ");
+      return vArr[parseInt(Math.random()*vArr.length)];
+    case 1: case 2: 
+    	return String.fromCharCode(Math.random()*10+48);
+    case 3: case 4: 
+    	return String.fromCharCode(Math.random()*26+65);
+    case 5: case 6: case 7: case 8: 
+    	return String.fromCharCode(Math.random()*26+97);
+    default: 
+      var vArr = new Array(" ", ":", ";", "!", ",", ".", "/", "\\", "@", "?", "`", "$", "%", "*", "(", ")");
+      return vArr[parseInt(Math.random()*vArr.length)];
+  }
+} 
+
+function Start() {
+  window.setTimeout(this.self+".decode();",nDelay); 
+}  
+
+function Drop() {  
+  //alert( eval("parseInt("+this.prefix+"Main.style.top)") );
+  window.setTimeout(this.self+".down();",nDelay); 
+}
+
+function Test() {
+  alert("Decode="+this.msg);
+  alert("Prefix="+this.prefix);    
+} 
+
+
+new cDecoder("~~~", "Disregard");  
+
+cDecoder.prototype.decode = Main;  
+cDecoder.prototype.go = Start;  
+cDecoder.prototype.check = Test;  
+cDecoder.prototype.fall = Drop;  
+cDecoder.prototype.down = Move;  
+
+//-->
+</script>
+
+<Div ID="aaaMain" class="OCR" style="position:absolute; top:40; left:460;font-size:16;">
+
+<Span ID="aaaZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="aaaOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="aaaTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="aaaThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="aaaFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="aaaFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="aaaSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="aaaSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="aaaEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="aaaNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="aaaTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="aaaTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cAAA = new cDecoder("cAAA", "aaa", "~");  
+cAAA.speed = nDelay*3;
+cAAA.fall();
+</script>
+
+<Div ID="bbbMain" class="OCR" style="position:absolute; top:390; left:360;font-size:16;">
+
+<Span ID="bbbZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="bbbOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="bbbTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="bbbThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="bbbFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="bbbFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="bbbSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="bbbSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="bbbEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="bbbNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="bbbTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="bbbTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cBBB = new cDecoder("cBBB", "bbb", "~");  
+cBBB.speed = nDelay*2;
+cBBB.fall();
+</script>
+
+<Div ID="cccMain" class="OCR" style="position:absolute; top:130; left:520;font-size:16;">
+
+<Span ID="cccZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="cccOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="cccTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="cccThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="cccFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="cccFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="cccSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="cccSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="cccEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="cccNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="cccTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="cccTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cCCC = new cDecoder("cCCC", "ccc", "~");  
+cCCC.speed = nDelay*0.5;
+cCCC.fall();
+</script>
+
+<Div ID="dddMain" class="OCR" style="position:absolute; top:110; left:500;font-size:16;">
+
+<Span ID="dddZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="dddOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="dddTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="dddThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="dddFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="dddFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="dddSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="dddSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="dddEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="dddNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="dddTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="dddTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cDDD = new cDecoder("cDDD", "ddd", "~");  
+cDDD.speed = nDelay*3;
+cDDD.fall();
+</script>
+
+<Div ID="eeeMain" class="OCR" style="position:absolute; top:220; left:180;font-size:16;">
+
+<Span ID="eeeZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="eeeOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="eeeTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="eeeThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="eeeFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="eeeFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="eeeSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="eeeSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="eeeEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="eeeNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="eeeTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="eeeTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cEEE = new cDecoder("cEEE", "eee", "~");  
+cEEE.speed = nDelay*3;
+cEEE.fall();
+</script>
+
+<Div ID="fffMain" class="OCR" style="position:absolute; top:80; left:440;font-size:16;">
+
+<Span ID="fffZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="fffOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="fffTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="fffThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="fffFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="fffFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="fffSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="fffSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="fffEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="fffNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="fffTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="fffTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cFFF = new cDecoder("cFFF", "fff", "~");  
+cFFF.speed = nDelay*3;
+cFFF.fall();
+</script>
+
+<Div ID="gggMain" class="OCR" style="position:absolute; top:260; left:330;font-size:16;">
+
+<Span ID="gggZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="gggOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="gggTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="gggThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="gggFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="gggFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="gggSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="gggSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="gggEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="gggNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="gggTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="gggTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cGGG = new cDecoder("cGGG", "ggg", "~");  
+cGGG.speed = nDelay*1;
+cGGG.fall();
+</script>
+
+<Div ID="hhhMain" class="OCR" style="position:absolute; top:20; left:560;font-size:16;">
+
+<Span ID="hhhZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="hhhOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="hhhTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="hhhThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="hhhFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="hhhFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="hhhSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="hhhSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="hhhEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="hhhNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="hhhTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="hhhTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cHHH = new cDecoder("cHHH", "hhh", "~");  
+cHHH.speed = nDelay*1.5;
+cHHH.fall();
+</script>
+
+<Div ID="iiiMain" class="OCR" style="position:absolute; top:150; left:280;font-size:16;">
+
+<Span ID="iiiZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="iiiOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="iiiTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="iiiThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="iiiFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="iiiFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="iiiSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="iiiSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="iiiEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="iiiNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="iiiTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="iiiTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cIII = new cDecoder("cIII", "iii", "~");  
+cIII.speed = nDelay*1;
+cIII.fall();
+</script>
+
+<Div ID="jjjMain" class="OCR" style="position:absolute; top:40; left:460;font-size:16;">
+
+<Span ID="jjjZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="jjjOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="jjjTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="jjjThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="jjjFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="jjjFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="jjjSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="jjjSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="jjjEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="jjjNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="jjjTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="jjjTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cJJJ = new cDecoder("cJJJ", "jjj", "~");  
+cJJJ.speed = nDelay*1;
+cJJJ.fall();
+</script>
+
+<Div ID="kkkMain" class="OCR" style="position:absolute; top:280; left:450;font-size:16;">
+
+<Span ID="kkkZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="kkkOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="kkkTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="kkkThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="kkkFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="kkkFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="kkkSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="kkkSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="kkkEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="kkkNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="kkkTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="kkkTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cKKK = new cDecoder("cKKK", "kkk", "~");  
+cKKK.speed = nDelay*1;
+cKKK.fall();
+</script>
+
+<Div ID="lllMain" class="OCR" style="position:absolute; top:70; left:170;font-size:16;">
+
+<Span ID="lllZero" style="position:absolute; top:-160; left:0; color: #000000">O</Span>
+<Span ID="lllOne" style="position:absolute; top:-144; left:0; color: #001900">O</Span>
+<Span ID="lllTwo" style="position:absolute; top:-128; left:0; color: #003300">O</Span>
+<Span ID="lllThree" style="position:absolute; top:-112; left:0; color: #004C00">O</Span>
+<Span ID="lllFour" style="position:absolute; top:-96; left:0; color: #006600">O</Span>
+<Span ID="lllFive" style="position:absolute; top:-80; left:0; color: #007F00">O</Span>
+<Span ID="lllSix" style="position:absolute; top:-64; left:0; color: #009900">O</Span>
+<Span ID="lllSeven" style="position:absolute; top:-48; left:0; color: #00B200">O</Span>
+<Span ID="lllEight" style="position:absolute; top:-32; left:0; color: #00CC00">O</Span>
+<Span ID="lllNine" style="position:absolute; top:-16; left:0; color: #00E519">O</Span>
+<Span ID="lllTen" style="position:absolute; top:0; left:0; color: #10FF33">O</Span>
+<Span ID="lllTop" style="position:absolute; top:0; left:0; color: #43FF66">O</Span>
+</Div>
+
+<script>
+var cLLL = new cDecoder("cLLL", "lll", "~");  
+cLLL.speed = nDelay*1;
+cLLL.fall();
+</script>
+ 
+
+<div style="background:black; border thin outset green; position:absolute; top:100px; left:100px; width:500px;"> 
+
+<Div ID="zzzMain" class="fixed" style="position:relative; top:0; left:0; background: black;">
+
+<Span ID="zzzZero" style="position:absolute; top:-8; left:-12; color: #000000"></Span>
+<Span ID="zzzOne" style="position:absolute; top:-6; left:-9; color: #003F00"></Span>
+<Span ID="zzzTwo" style="position:absolute; top:-4; left:-6; color: #007F00"></Span>
+<Span ID="zzzThree" style="position:absolute; top:-2; left:-3; color: #00BF00"></Span>
+<Span ID="zzzFour" style="position:absolute; top:0; left:0; color: #10FF33"></Span>
+<Span ID="zzzTop" style="position:absolute; top:0; left:0; color: #43FF66"></Span>
+</Div>
+
+<script> 
+  var czzz = new cDecoder("czzz", "zzz", "ONE VISION &");  
+  window.setTimeout("czzz.go()", 0);
+</script>
+  
+</div>
+
+<div style="background:black; border thin outset green; position:absolute; top:200px; left:100px; width:500px;"> 
+<a href="http://linhtruong.com" style="text-decoration:none; cursor:hand;">
+<Div ID="yyyMain" class="fixed" style="position:relative; top:0; left:0; background: black;">
+
+<Span ID="yyyZero" style="position:absolute; top:-8; left:-12; color: #000000"></Span>
+<Span ID="yyyOne" style="position:absolute; top:-6; left:-9; color: #003F00"></Span>
+<Span ID="yyyTwo" style="position:absolute; top:-4; left:-6; color: #007F00"></Span>
+<Span ID="yyyThree" style="position:absolute; top:-2; left:-3; color: #00BF00"></Span>
+<Span ID="yyyFour" style="position:absolute; top:0; left:0; color: #10FF33"></Span>
+<Span ID="yyyTop" style="position:absolute; top:0; left:0; color: #43FF66"></Span>
+</Div>
+
+<script> 
+  var cyyy = new cDecoder("cyyy", "yyy", "  & ONE PASSION");  
+  window.setTimeout("cyyy.go()", 10000);
+</script>
+
+
+</a>
+</div>
+
+<div style="background:black; border thin outset green; position:absolute; top:300px; left:250px; width:500px;"> 
+<a class="ltLink" href="http://TheInnoTech.com" style="text-decoration:none; cursor:hand"> Matrix Falling! © 2012 LinhTruong.com </a>
+</div>
+
+
+
+<script language="javascript"> 
+if ( navigator.appName == 'Netscape' ) {
+document.write( '<embed src = "dw.mp3" autostart="true" hidden="true" loop="true" width="0" height="0"></embed>' );
+} else if ( navigator.appName == 'Microsoft Internet Explorer' ) {
+document.write( '<bgsound src = "dw.mp3" loop="-1" width="0" height="0">' );
+} else document.write( '<bgsound src = "dw.mp3" loop="-1" width="0" height="0"><embed src = "dw.mp3" autostart="true" hidden="true" loop="true" width="0" height="0"></embed>' );
+ 
+</script>
+
+
+
+
+</body>
+</html>
